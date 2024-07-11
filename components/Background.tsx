@@ -2,7 +2,6 @@
 
 import Lottie from "lottie-react";
 import background from "@/animations/background.json";
-import "@/styles/globals.css";
 
 function Background() {
   return (
