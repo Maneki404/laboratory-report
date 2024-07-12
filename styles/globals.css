@@ -30,3 +30,33 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* Loader */
+.hypnotic {
+  width: 67.2px;
+  height: 28px;
+  border: 2.2px solid #000000;
+  border-radius: 50%;
+  display: grid;
+  animation: hypnotic-ds34hk 2.8s infinite linear;
+}
+
+.hypnotic:before,
+.hypnotic:after {
+  content: "";
+  grid-area: 1/1;
+  border: inherit;
+  border-radius: 50%;
+  animation: inherit;
+  animation-duration: 4.199999999999999s;
+}
+
+.hypnotic:after {
+  --s: -1;
+}
+
+@keyframes hypnotic-ds34hk {
+  100% {
+    transform: rotate(calc(var(--s, 1) * 1turn));
+  }
+}

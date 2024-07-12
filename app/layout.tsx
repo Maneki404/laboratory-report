@@ -9,7 +9,7 @@ import "@mantine/core/styles.css";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 //const inter = Inter({ subsets: ["latin"] });
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
   title: "Laboratory App",
@@ -26,7 +26,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={montserrat.className}>
+      <body className={montserrat.className + " tracking-wide"}>
         <MantineProvider>
           <Nav />
           {children}
