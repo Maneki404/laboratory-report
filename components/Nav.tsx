@@ -3,7 +3,6 @@
 import { Button } from "@mantine/core";
 import colors from "@/constants/colors";
 import { LuAtom } from "react-icons/lu";
-import { TbReportMedical } from "react-icons/tb";
 import { IoCreateOutline } from "react-icons/io5";
 
 import { Pacifico } from "next/font/google";
