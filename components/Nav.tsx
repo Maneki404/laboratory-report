@@ -62,6 +62,8 @@ function Nav() {
             variant="filled"
             color={colors["_nav-button-solid"]}
             rightSection={<IoCreateOutline size={"1.5vw"} />}
+            component="a"
+            href="/create"
           >
             <div className="text-[0.9vw]">Create</div>
           </Button>

@@ -18,6 +18,7 @@ function Background() {
         {...defaultOptions}
         onEnterFrame={() => setIsLoading(false)}
       />
+      <div className="bg-gradient-to-b from-purple-100 to-transparent w-screen h-52 z-10 absolute top-0"></div>
     </div>
   );
 }

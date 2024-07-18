@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 
 import "@mantine/core/styles.css";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import Background from "@/components/Background";
 
 //const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"], weight: "500" });
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={montserrat.className + " tracking-wide"}>
         <MantineProvider>
           <Nav />
+          <Background />
           {children}
         </MantineProvider>
       </body>
