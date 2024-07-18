@@ -8,7 +8,7 @@ import Loading from "./Loading";
 function Reports({ className = "" }) {
   const [isLoading, setIsLoading] = useState(true);
   return (
-    <div className={className + " absolute z-20"}>
+    <div className={className + " absolute z-10"}>
       {isLoading ? <Loading /> : <></>}
       <Lottie
         animationData={reports}

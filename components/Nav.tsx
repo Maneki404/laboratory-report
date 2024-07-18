@@ -30,7 +30,7 @@ function Nav() {
           <div
             className={
               pacifico.className +
-              " w-full pt-4 pb-4 pl-2 text-start text-3xl text-gray-950"
+              " w-full pt-4 pb-4 pl-2 text-start text-[2vw] text-gray-950"
             }
           >
             Reporter
@@ -51,15 +51,19 @@ function Nav() {
               theme === "light" ? setTheme("dark") : setTheme("light");
             }}
           >
-            {theme === "light" ? <FaRegMoon size={23} /> : <LuSun size={25} />}
+            {theme === "light" ? (
+              <FaRegMoon size={"1.6vw"} />
+            ) : (
+              <LuSun size={"2vw"} />
+            )}
           </Button>
           <Button
             className="mr-4"
             variant="filled"
             color={colors["_nav-button-solid"]}
-            rightSection={<IoCreateOutline size={19} />}
+            rightSection={<IoCreateOutline size={"1.5vw"} />}
           >
-            Create
+            <div className="text-[0.9vw]">Create</div>
           </Button>
           <div className="w-[4vw] flex justify-center items-center">
             <NavMenu />
