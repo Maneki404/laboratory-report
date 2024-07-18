@@ -36,8 +36,9 @@ function Nav() {
             Reporter
           </div>
         </a>
-        <div className="w-[50vw] mr-7 ml-7 flex flex-row">
-          <NavLink name="Home" href="/contact" />
+        <div className="w-[15vw] flex flex-row items-center justify-center"></div>
+        <div className="w-[50vw] mr-7 ml-7 flex flex-row justify-center">
+          <NavLink name="Home" href="/" />
           <NavLink name="About" href="/about" />
           <NavLink name="Contact" href="/contact" />
         </div>
