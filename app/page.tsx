@@ -14,7 +14,7 @@ export default function Home() {
         }
       >
         <span>
-          Create laboratory{" "}
+          Generate laboratory{" "}
           <span className="ml-[17vw]">
             reports <em>easily</em>
           </span>
