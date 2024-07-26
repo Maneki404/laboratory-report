@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-//import { Inter } from "next/font/google";
 import { Montserrat } from "next/font/google";
 
 import "@/styles/globals.css";
 import Nav from "@/components/Nav";
 
 import "@mantine/core/styles.css";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import {
+  ColorSchemeScript,
+  Input,
+  MantineProvider,
+  createTheme,
+} from "@mantine/core";
 import Background from "@/components/Background";
 
-//const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {

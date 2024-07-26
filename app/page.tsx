@@ -1,5 +1,4 @@
-import Background from "@/components/Background";
-import Reports from "@/components/Reports";
+import ReportsAnim from "@/components/ReportsAnim";
 
 import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"], weight: "600" });
@@ -31,7 +30,7 @@ export default function Home() {
           Get started now →
         </em>
       </a>
-      <Reports className="top-[0] right-[5vw] h-[100vh] flex w-[30vw]" />
+      <ReportsAnim className="top-[0] right-[5vw] h-[100vh] flex w-[30vw]" />
     </div>
   );
 }

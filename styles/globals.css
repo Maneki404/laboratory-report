@@ -60,3 +60,19 @@ body {
     transform: rotate(calc(var(--s, 1) * 1turn));
   }
 }
+
+.mantine-InputWrapper-label {
+  font-size: 2vh;
+}
+
+.mantine-Button-label {
+  font-size: 0.8vw;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .mantine-Button-label {
+    font-size: 1.3vw;
+    width: 100%;
+  }
+}

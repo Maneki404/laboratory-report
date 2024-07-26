@@ -1,0 +1,13 @@
+.input {
+  transition: none;
+
+  &:focus-within {
+    outline: 0.15vw solid rgb(165, 40, 255);
+    border-color: transparent;
+  }
+
+  background-color: rgba(255, 255, 255, 0.8);
+  outline: 1px solid rgb(229, 194, 255);
+  min-height: 5vh;
+  height: 5vh;
+}

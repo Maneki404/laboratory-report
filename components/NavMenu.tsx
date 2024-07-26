@@ -9,8 +9,8 @@ function NavMenu() {
     <Menu shadow="md" width={200}>
       <Menu.Target>
         <UnstyledButton>
-          <div className="border-solid border-purple-950 border-opacity-40 border-2 rounded-full bg-purple-50">
-            <Avatar src={"profile.png"} radius="xl" size={36} />
+          <div className="border-solid border-purple-950 border-opacity-30  border-[1px] rounded-full bg-purple-50">
+            <Avatar src={"profile.png"} radius="xl" size={27} />
           </div>
         </UnstyledButton>
       </Menu.Target>

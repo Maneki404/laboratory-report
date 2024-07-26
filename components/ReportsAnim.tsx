@@ -5,7 +5,7 @@ import reports from "@/animations/reports.json";
 import { useState } from "react";
 import Loading from "./Loading";
 
-function Reports({ className = "" }) {
+function ReportsAnim({ className = "" }) {
   const [isLoading, setIsLoading] = useState(true);
   return (
     <div className={className + " absolute z-10"}>
@@ -21,4 +21,4 @@ function Reports({ className = "" }) {
   );
 }
 
-export default Reports;
+export default ReportsAnim;
