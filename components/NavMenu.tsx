@@ -4,13 +4,13 @@ import { FaTrashAlt } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { IoLogOut } from "react-icons/io5";
 
-function NavMenu() {
+function NavMenu({ size = 27 }) {
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
         <UnstyledButton>
           <div className="border-solid border-purple-950 border-opacity-30  border-[1px] rounded-full bg-purple-50">
-            <Avatar src={"profile.png"} radius="xl" size={27} />
+            <Avatar src={"profile.png"} radius="xl" size={size} />
           </div>
         </UnstyledButton>
       </Menu.Target>

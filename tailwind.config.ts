@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         "_nav-button-solid": "rgba(189, 0, 63, 1)",
+        "_transparent": "rgba(0, 0, 0, 0)",
       },
     },
   },
