@@ -24,6 +24,9 @@ function HamburgerContent() {
   return (
     <div className="w-fit flex flex-col">
       <motion.li variants={variants}>
+        <em className="hamburger-text">Hello Maneki!</em>
+      </motion.li>
+      <motion.li variants={variants}>
         <a href="/settings" className="hamburger-items">
           <IoSettingsSharp />
           Settings
@@ -35,7 +38,7 @@ function HamburgerContent() {
           Logout
         </a>
       </motion.li>
-      <motion.li variants={variants} className="text-red-700">
+      <motion.li variants={variants} className="text-red-700 pb-[1vh]">
         <a href="/delete-account" className="hamburger-items">
           <FaTrashAlt />
           Delete my account

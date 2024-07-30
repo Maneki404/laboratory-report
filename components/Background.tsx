@@ -2,11 +2,14 @@
 
 import Lottie from "lottie-react";
 import background from "@/animations/background.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "./Loading";
 
 function Background() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    setIsLoading(true);
+  }, []);
   return (
     <div className="background">
       {isLoading ? <Loading /> : <></>}
