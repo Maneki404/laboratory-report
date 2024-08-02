@@ -9,27 +9,27 @@ function HomeDesktop() {
       <div
         className={
           montserrat.className +
-          " top-[20vh] left-[5vw] h-[60vh] w-[60vw] absolute flex justify-center items-center text-[5vw]"
+          " top-[20vh] left-[5vw] h-[60vh] w-[60vw] absolute flex flex-col justify-center items-center text-[5vw]"
         }
       >
         <span>
           Generate laboratory{" "}
           <span className="ml-[17vw]">
-            reports <em>easily</em>
+            reports <em className="underline-offset-4 underline">easily</em>
           </span>
         </span>
+        <a
+          className={
+            montserrat.className +
+            " w-[60vw] flex mt-[4vh] items-center justify-end text-[2vw]"
+          }
+          href="/create"
+        >
+          <em className="mr-[3.4vw] hover:bg-purple-950 hover:bg-opacity-5 pr-5 pl-5 pt-[0.5vh] pb-[0.5vh] rounded-xl">
+            Get started now →
+          </em>
+        </a>
       </div>
-      <a
-        className={
-          montserrat.className +
-          " bottom-[26vh] left-[1.5vw] w-[60vw] absolute flex items-center justify-end text-[2vw]"
-        }
-        href="/create"
-      >
-        <em className="mr-[3.4vw] hover:bg-purple-950 hover:bg-opacity-5 pr-5 pl-5 rounded-xl">
-          Get started now →
-        </em>
-      </a>
       <ReportsAnim className="top-[0] right-[5vw] h-[100vh] flex w-[30vw]" />
     </div>
   );

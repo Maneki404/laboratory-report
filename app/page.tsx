@@ -1,5 +1,5 @@
-import HomeDesktop from "@/components/HomeResolutions/HomeDesktop";
+import Resolutions from "@/components/Resolutions";
 
 export default function Home() {
-  return <HomeDesktop />;
+  return <Resolutions name="home" />;
 }

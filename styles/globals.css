@@ -82,6 +82,12 @@ body {
 }
 
 @layer utilities {
+  .button-text {
+    font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (2000 - 300)));
+  }
+}
+
+@layer components {
   .logo-text {
     /* calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
     font-size: calc(20px + (35 - 20) * ((100vw - 300px) / (2000 - 300)));
@@ -89,9 +95,6 @@ body {
   .logo-icon {
     width: calc(20px + (35 - 20) * ((100vw - 300px) / (2000 - 300)));
     height: calc(20px + (35 - 20) * ((100vw - 300px) / (2000 - 300)));
-  }
-  .button-text {
-    font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (2000 - 300)));
   }
   .hamburger-menu {
     @apply w-[100vw] shadow-md rounded-b-md z-10 absolute top-[10vh] right-0 pl-[3.25vw] flex items-center;

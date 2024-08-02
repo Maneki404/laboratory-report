@@ -6,6 +6,8 @@ import Loading from "./Loading";
 import NavDesktop from "./NavResolutions/NavDesktop";
 import NavMobile from "./NavResolutions/NavMobile";
 import HamburgerMenu from "./HamburgerResolutions/HamburgerMenu";
+import HomeDesktop from "./HomeResolutions/HomeDesktop";
+import HomeMobile from "./HomeResolutions/HomeMobile";
 
 function Resolutions({ name = "" }) {
   const { width, height } = useWindowSize();
@@ -17,6 +19,8 @@ function Resolutions({ name = "" }) {
         return <NavMobile />;
       case "hamburger":
         return <HamburgerMenu />;
+      case "home":
+        return <HomeMobile />;
       default:
         return null;
     }
@@ -24,6 +28,8 @@ function Resolutions({ name = "" }) {
     switch (name) {
       case "nav":
         return <NavDesktop />;
+      case "home":
+        return <HomeDesktop />;
       default:
         return null;
     }
