@@ -34,7 +34,8 @@ function NavMobile() {
   };
 
   return (
-    <div className="bg-transparent z-20 absolute w-screen h-[10vh]">
+    <div className="bg-transparent z-50 fixed w-screen h-[10vh]">
+      <div className="bg-gradient-to-b from-purple-200 via-pink-300 via-[67%] to-transparent w-screen h-[14vh] -z-10 absolute top-0"></div>
       <div className="flex flex-row ml-[3vw] mr-[3vw] items-center justify-between h-full">
         <a
           className="w-[45vw] h-full flex flex-row items-center justify-center"

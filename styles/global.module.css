@@ -8,6 +8,12 @@
 
   background-color: rgba(255, 255, 255, 0.8);
   outline: 1px solid rgb(229, 194, 255);
-  min-height: 5vh;
-  height: 5vh;
+  min-height: 4.3vh;
+  width: calc(10vw + (40vw - 10vw) * ((100vw - 300px) / (2000 - 300)));
+  height: calc(10px + (35 - 10) * ((100vw - 300px) / (2000 - 300)));
+  font-size: calc(7px + (25 - 7) * ((100vh - 300px) / (2000 - 300)));
+}
+
+.inputwrapper {
+  font-size: 5px;
 }

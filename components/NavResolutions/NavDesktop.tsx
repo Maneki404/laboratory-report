@@ -1,10 +1,6 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { open, close, getState, still } from "@/lib/slices/hamburgerSlice";
-
 import { Button } from "@mantine/core";
-import { Burger } from "@mantine/core";
 
 import colors from "@/constants/colors";
 import "@/styles/globals.css";
@@ -22,20 +18,9 @@ const pacifico = Pacifico({ subsets: ["latin"], weight: "400" });
 function NavDesktop() {
   const [theme, setTheme] = useState("light");
 
-  const dispatch = useAppDispatch();
-  const isOpen = useAppSelector(getState) === "open";
-  const isStill = useAppSelector(getState) === "still";
-
-  const toggleHamburger = () => {
-    if (isOpen || isStill) {
-      dispatch(close());
-    } else {
-      dispatch(open());
-    }
-  };
-
   return (
-    <div className="bg-transparent z-20 absolute w-screen h-[12vh]">
+    <div className="bg-transparent z-20 fixed w-screen h-[12vh]">
+      <div className="bg-gradient-to-b from-purple-100 to-transparent w-screen h-[30vh] -z-10 absolute top-0"></div>
       <div className="flex flex-row ml-[3vw] mr-[3vw] items-center justify-between h-full">
         <a
           className="w-[20vw] h-full flex flex-row items-center justify-center"

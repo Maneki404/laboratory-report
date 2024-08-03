@@ -35,6 +35,9 @@ export default function RootLayout({
             {children}
             <Resolutions name="hamburger" />
           </MantineProvider>
+          <footer>
+            <Resolutions name="footer" />
+          </footer>
         </body>
       </html>
     </StoreProvider>

@@ -12,10 +12,10 @@ function HomeMobile() {
           " top-[20vh] left-0 h-[50vh] w-[100vw] absolute flex justify-start flex-col items-start text-[6vw]"
         }
       >
-        <span className="w-[100%] text-start ml-[3vw] mt-[10vh]">
+        <div className="w-[100%] text-start ml-[3vw] mt-[10vh]">
           Generate laboratory reports{" "}
           <em className="underline-offset-4 underline">easily</em>
-        </span>
+        </div>
         <a
           className={
             montserrat.className +

@@ -8,21 +8,21 @@ function Report() {
     <div
       className={
         montserrat.className +
-        " w-full h-full text-[0.7vw] pt-[3vw] pl-[3vw] pr-[3vw] pb-[1vw] font-[500] flex flex-col flex-grow"
+        " w-full h-full text-[1.4vh] pt-[3vh] pl-[3vw] pr-[3vw] pb-[1vh] font-[500] flex flex-col flex-grow"
       }
     >
       <div className="flex flex-row items-center justify-between mb-[2vh]">
         {/* Logo */}
         <div className="flex flex-row">
-          <MdOutlineScience size={"2vw"} />
+          <MdOutlineScience size={"3vh"} />
           <div className="flex flex-col ml-1 justify-center">
-            <div className="leading-none text-[1.2vw]">Nucleon</div>
-            <div className="leading-none text-[0.7vw] font-[400]">
+            <div className="leading-none text-[1.6vh]">Nucleon</div>
+            <div className="leading-none text-[0.9vh] font-[400]">
               Laboratory & Research
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[40%] text-[0.6vw]">
+        <div className="flex flex-col w-[40%] text-[0.9vh]">
           {/* Date */}
           <div className="flex w-full flex-row justify-center">
             <div>Date:</div>
@@ -82,37 +82,37 @@ function Report() {
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="w-full h-[1.4vw] mr-2 border-b-black border-b"></div>
+          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
         </div>
       </div>
       <div className="flex flex-row">
@@ -124,7 +124,7 @@ function Report() {
       </div>
       <div className="flex flex-col flex-grow">
         <div className="flex flex-row h-full">
-          <div className="w-full h-full pt-[1vh] flex items-end justify-center text-[0.4vw]">
+          <div className="w-full h-full pt-[1vh] flex items-end justify-center text-[0.7vh]">
             © 2024 Reporter TR, Inc. All rights reserved.
           </div>
         </div>

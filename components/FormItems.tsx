@@ -60,7 +60,8 @@ const itemsArr = [
     label: "Diagnosis Title:",
     placeholder: "e.g. Social Anxiety Disorder",
     visible: true,
-    isLong: false,
+    isLong: true,
+    isOneLine: true,
   },
   {
     delay: 0.8,
@@ -109,35 +110,48 @@ function Item({ id = 0 }) {
       children={
         itemsArr[id].visible ? (
           itemsArr[id].isText ? (
-            <div className="text-[1vw] font-[700]">{itemsArr[id].title}</div>
+            <div className="text-[1.7vh] font-[700]">{itemsArr[id].title}</div>
           ) : itemsArr[id].isLong ? (
             <div className="text-[1vw]">
               <Input.Wrapper
                 className="mr-[1vw] w-[200%]"
+                styles={{
+                  label: { fontSize: "1.6vh", paddingBottom: "0.5vh" },
+                }}
                 label={itemsArr[id].label}
                 error=""
               >
-                <Textarea
-                  placeholder={itemsArr[id].placeholder}
-                  classNames={classes}
-                  autosize
-                  minRows={3}
-                  maxRows={5}
-                />
+                {itemsArr[id].isOneLine ? (
+                  <Input
+                    placeholder={itemsArr[id].placeholder}
+                    classNames={classes}
+                  />
+                ) : (
+                  <Textarea
+                    placeholder={itemsArr[id].placeholder}
+                    classNames={classes}
+                    autosize
+                    minRows={3}
+                    maxRows={5}
+                  />
+                )}
               </Input.Wrapper>
             </div>
           ) : itemsArr[id].isFile ? (
-            <div className="text-[2vh] flex flex-col">
+            <div className="text-[1.6vh] flex flex-col">
               {itemsArr[id].label}
               <div className="pt-[1vh]">
                 <FileButton onChange={() => {}} accept="image/png,image/jpeg">
                   {(props) => (
                     <Button
+                      className="h-[4.5vh]"
                       color={colors["_form-button-solid"]}
                       {...props}
-                      leftSection={<MdOutlineUploadFile size={"1.3vw"} />}
+                      leftSection={<MdOutlineUploadFile size={"2vh"} />}
                     >
-                      {itemsArr[id].placeholder}
+                      <div className="text-[1.4vh]">
+                        {itemsArr[id].placeholder}
+                      </div>
                     </Button>
                   )}
                 </FileButton>
@@ -146,6 +160,9 @@ function Item({ id = 0 }) {
           ) : (
             <div className="text-[1vw]">
               <Input.Wrapper
+                styles={{
+                  label: { fontSize: "1.6vh", paddingBottom: "0.5vh" },
+                }}
                 className="mr-[1vw]"
                 label={itemsArr[id].label}
                 error=""

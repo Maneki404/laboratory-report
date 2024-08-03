@@ -12,12 +12,12 @@ function HomeDesktop() {
           " top-[20vh] left-[5vw] h-[60vh] w-[60vw] absolute flex flex-col justify-center items-center text-[5vw]"
         }
       >
-        <span>
+        <div>
           Generate laboratory{" "}
-          <span className="ml-[17vw]">
+          <div className="ml-[17vw]">
             reports <em className="underline-offset-4 underline">easily</em>
-          </span>
-        </span>
+          </div>
+        </div>
         <a
           className={
             montserrat.className +
