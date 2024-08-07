@@ -89,20 +89,20 @@ const itemsArr = [
   },
 ];
 
-function FormItems() {
+function FormItems({ visibleForm = true }) {
   return (
     <motion.ul className="w-full flex flex-row flex-wrap gap-y-[2vh]">
-      <Items />
+      <Items visibleForm={visibleForm} />
     </motion.ul>
   );
 }
 
-function Item({ id = 0 }) {
+function Item({ id = 0, visibleForm = true }) {
   return (
     <motion.li
       className="w-1/2"
       initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      animate={{ y: visibleForm ? 0 : 50, opacity: visibleForm ? 1 : 0 }}
       transition={{
         duration: 0.5,
         delay: itemsArr[id].delay,
@@ -182,10 +182,10 @@ function Item({ id = 0 }) {
   );
 }
 
-function Items() {
+function Items({ visibleForm = true }) {
   var items = [];
   for (let i = 0; i < itemsArr.length; i++) {
-    items.push(<Item id={i} />);
+    items.push(<Item id={i} visibleForm={visibleForm} />);
   }
   return items;
 }
