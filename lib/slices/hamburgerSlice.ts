@@ -10,7 +10,7 @@ const initialState: HamburgerState = {
 };
 
 export const hamburgerSlice = createSlice({
-  name: "hamburger",
+  name: "form",
   initialState,
   reducers: {
     none: (state) => {

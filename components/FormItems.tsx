@@ -3,9 +3,20 @@ import classes from "@/styles/global.module.css";
 import colors from "@/constants/colors";
 
 import { motion } from "framer-motion";
-import { Input, Textarea, FileButton, Button } from "@mantine/core";
+import {
+  Input,
+  Textarea,
+  FileButton,
+  Button,
+  NumberInput,
+} from "@mantine/core";
 
 import { MdOutlineUploadFile } from "react-icons/md";
+import { IoIosSave } from "react-icons/io";
+
+import Form from "@/lib/classes/Form";
+import { useDispatch, useSelector } from "react-redux";
+import { getState, set } from "@/lib/slices/formSlice";
 
 const itemsArr = [
   {
@@ -20,6 +31,7 @@ const itemsArr = [
     visible: false,
   },
   {
+    id: "firstName",
     delay: 0.4,
     label: "First Name:",
     placeholder: "e.g. Jane",
@@ -27,6 +39,7 @@ const itemsArr = [
     isLong: false,
   },
   {
+    id: "secondName",
     delay: 0.5,
     label: "Second Name:",
     placeholder: "e.g. Doe",
@@ -34,11 +47,13 @@ const itemsArr = [
     isLong: false,
   },
   {
+    id: "IDNumber",
     delay: 0.6,
     label: "ID Number:",
     placeholder: "e.g. 12345678912",
     visible: true,
     isLong: false,
+    isID: true,
   },
   {
     delay: 0.6,
@@ -56,6 +71,7 @@ const itemsArr = [
     visible: false,
   },
   {
+    id: "diagnosisTitle",
     delay: 0.8,
     label: "Diagnosis Title:",
     placeholder: "e.g. Social Anxiety Disorder",
@@ -68,6 +84,7 @@ const itemsArr = [
     visible: false,
   },
   {
+    id: "diagnosisDetails",
     delay: 0.9,
     label: "Diagnosis Details:",
     placeholder:
@@ -80,6 +97,7 @@ const itemsArr = [
     visible: false,
   },
   {
+    id: "photoUrl",
     delay: 1,
     label: "Photo of the Physical Report:",
     placeholder: "Upload",
@@ -87,17 +105,47 @@ const itemsArr = [
     isLong: false,
     isFile: true,
   },
+  {
+    delay: 1.1,
+    placeholder: "SAVE",
+    visible: true,
+    isLong: false,
+    isSave: true,
+  },
 ];
 
 function FormItems({ visibleForm = true }) {
+  const dispatch = useDispatch();
+  const form = useSelector(getState);
+
+  const handleInputChange = (id: keyof Form, value: any) => {
+    const updatedForm = { ...form, [id]: value };
+    dispatch(set({ form: updatedForm }));
+  };
+
   return (
     <motion.ul className="w-full flex flex-row flex-wrap gap-y-[2vh]">
-      <Items visibleForm={visibleForm} />
+      {itemsArr.map((item, index) => (
+        <Item
+          key={index}
+          id={index}
+          visibleForm={visibleForm}
+          form={form}
+          handleInputChange={handleInputChange}
+        />
+      ))}
     </motion.ul>
   );
 }
 
-function Item({ id = 0, visibleForm = true }) {
+function Item({
+  id = 0,
+  visibleForm = true,
+  form = new Form(null, null, null, null, null, null),
+  handleInputChange = (id: any, value: any) => {},
+}) {
+  const item = itemsArr[id];
+
   return (
     <motion.li
       className="w-1/2"
@@ -105,41 +153,51 @@ function Item({ id = 0, visibleForm = true }) {
       animate={{ y: visibleForm ? 0 : 50, opacity: visibleForm ? 1 : 0 }}
       transition={{
         duration: 0.5,
-        delay: itemsArr[id].delay,
+        delay: item.delay,
       }}
       children={
-        itemsArr[id].visible ? (
-          itemsArr[id].isText ? (
-            <div className="text-[1.7vh] font-[700]">{itemsArr[id].title}</div>
-          ) : itemsArr[id].isLong ? (
+        item.visible ? (
+          item.isText ? (
+            <div className="text-[1.7vh] font-[700]">{item.title}</div>
+          ) : item.isLong ? (
             <div className="text-[1vw]">
               <Input.Wrapper
                 className="mr-[1vw] w-[200%]"
                 styles={{
                   label: { fontSize: "1.6vh", paddingBottom: "0.5vh" },
                 }}
-                label={itemsArr[id].label}
+                label={item.label}
                 error=""
               >
-                {itemsArr[id].isOneLine ? (
+                {item.isOneLine ? (
                   <Input
-                    placeholder={itemsArr[id].placeholder}
+                    maxLength={100}
+                    placeholder={item.placeholder}
                     classNames={classes}
+                    value={form[item.id as keyof Form] || ""}
+                    onChange={(e) =>
+                      handleInputChange(item.id as keyof Form, e.target.value)
+                    }
                   />
                 ) : (
                   <Textarea
-                    placeholder={itemsArr[id].placeholder}
+                    maxLength={1000}
+                    placeholder={item.placeholder}
                     classNames={classes}
                     autosize
                     minRows={3}
                     maxRows={5}
+                    value={form[item.id as keyof Form] || ""}
+                    onChange={(e) =>
+                      handleInputChange(item.id as keyof Form, e.target.value)
+                    }
                   />
                 )}
               </Input.Wrapper>
             </div>
-          ) : itemsArr[id].isFile ? (
+          ) : item.isFile ? (
             <div className="text-[1.6vh] flex flex-col">
-              {itemsArr[id].label}
+              {item.label}
               <div className="pt-[1vh]">
                 <FileButton onChange={() => {}} accept="image/png,image/jpeg">
                   {(props) => (
@@ -149,13 +207,45 @@ function Item({ id = 0, visibleForm = true }) {
                       {...props}
                       leftSection={<MdOutlineUploadFile size={"2vh"} />}
                     >
-                      <div className="text-[1.4vh]">
-                        {itemsArr[id].placeholder}
-                      </div>
+                      <div className="text-[1.4vh]">{item.placeholder}</div>
                     </Button>
                   )}
                 </FileButton>
               </div>
+            </div>
+          ) : item.isSave ? (
+            <div className="flex  h-full items-end justify-end">
+              <Button
+                className="h-[4.5vh]"
+                color={colors["_form-button-solid-save"]}
+                rightSection={<IoIosSave size={"2vh"} />}
+              >
+                <div className="text-[1.4vh]">{item.placeholder}</div>
+              </Button>
+            </div>
+          ) : item.isID ? (
+            <div className="text-[1vw]">
+              <Input.Wrapper
+                styles={{
+                  label: { fontSize: "1.6vh", paddingBottom: "0.5vh" },
+                }}
+                className="mr-[1vw]"
+                label={item.label}
+                error=""
+              >
+                <NumberInput
+                  maxLength={11}
+                  allowDecimal={false}
+                  allowNegative={false}
+                  hideControls
+                  placeholder={item.placeholder}
+                  classNames={classes}
+                  value={form[item.id as keyof Form] || ""}
+                  onChange={(e) =>
+                    handleInputChange(item.id as keyof Form, e.valueOf())
+                  }
+                />
+              </Input.Wrapper>
             </div>
           ) : (
             <div className="text-[1vw]">
@@ -164,12 +254,17 @@ function Item({ id = 0, visibleForm = true }) {
                   label: { fontSize: "1.6vh", paddingBottom: "0.5vh" },
                 }}
                 className="mr-[1vw]"
-                label={itemsArr[id].label}
+                label={item.label}
                 error=""
               >
                 <Input
-                  placeholder={itemsArr[id].placeholder}
+                  maxLength={50}
+                  placeholder={item.placeholder}
                   classNames={classes}
+                  value={form[item.id as keyof Form] || ""}
+                  onChange={(e) =>
+                    handleInputChange(item.id as keyof Form, e.target.value)
+                  }
                 />
               </Input.Wrapper>
             </div>
@@ -180,14 +275,6 @@ function Item({ id = 0, visibleForm = true }) {
       }
     />
   );
-}
-
-function Items({ visibleForm = true }) {
-  var items = [];
-  for (let i = 0; i < itemsArr.length; i++) {
-    items.push(<Item id={i} visibleForm={visibleForm} />);
-  }
-  return items;
 }
 
 export default FormItems;

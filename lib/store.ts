@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import hamburgerReducer from "@/lib/slices/hamburgerSlice";
+import formReducer from "@/lib/slices/formSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       hamburger: hamburgerReducer,
+      form: formReducer,
     },
   });
 };

@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux";
+import { getState } from "@/lib/slices/formSlice";
+
 import { MdOutlineScience } from "react-icons/md";
 
 import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"], weight: "variable" });
 
 function Report() {
+  const form = useSelector(getState);
   return (
     <div
       className={
@@ -47,18 +51,36 @@ function Report() {
         {/* Name - Last Name */}
         <div className="flex w-full">
           <div className="leading-loose">First Name:</div>
-          <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          {form.firstName != null && form.firstName != "" ? (
+            <div className="break-words line-clamp-3 whitespace-normal max-w-[9.5vw] ml-2 mr-0 items-center font-semibold pt-[0.4vh] border-b-transparent border-b">
+              {form.firstName}
+            </div>
+          ) : (
+            <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          )}
         </div>
         <div className="flex w-full">
           <div className="leading-loose">Last Name:</div>
-          <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          {form.secondName != null && form.secondName != "" ? (
+            <div className="break-words line-clamp-3 whitespace-normal max-w-[9.5vw] ml-2 mr-0 items-center font-semibold pt-[0.4vh] border-b-transparent border-b">
+              {form.secondName}
+            </div>
+          ) : (
+            <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          )}
         </div>
       </div>
       {/* ID Number */}
       <div className="flex flex-row">
         <div className="flex w-full">
           <div className="leading-loose">ID Number:</div>
-          <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          {form.IDNumber != null && form.IDNumber.toString() != "" ? (
+            <div className="flex-grow ml-2 mr-0 flex items-center font-semibold pt-[0.4vh] border-b-transparent border-b">
+              {form.IDNumber}
+            </div>
+          ) : (
+            <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          )}
         </div>
         <div className="flex w-full">
           <div className="flex-grow"></div>
@@ -70,51 +92,71 @@ function Report() {
       </div>
       <div className="flex flex-row">
         <div className="flex w-full">
-          <div className="leading-loose mr-[2vw]">Diagnosis Title:</div>
-          <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          <div className="leading-loose mr-[0.5vw] text-nowrap">
+            Diagnosis Title:
+          </div>
+          {form.diagnosisTitle != null && form.diagnosisTitle != "" ? (
+            <div className="break-words ml-3 line-clamp-3 whitespace-normal text-justify font-semibold pt-[0.4vh] border-b-transparent border-b]">
+              {form.diagnosisTitle}
+            </div>
+          ) : (
+            <div className="flex-grow ml-3 mr-2 border-b-black border-b"></div>
+          )}
         </div>
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-col">
         <div className="flex w-full">
-          <div className="leading-loose mr-[1vw]">Diagnosis Details:</div>
-          <div className="flex-grow ml-2 mr-2 border-b-black border-b"></div>
+          <div className="leading-loose mr-[1vw] text-nowrap">
+            Diagnosis Details:
+          </div>
         </div>
+        {form.diagnosisDetails != null && form.diagnosisDetails != "" ? (
+          <div className="break-words line-clamp-[12] whitespace-normal text-justify font-semibold pt-[0.4vh] border-b-transparent border-b">
+            {form.diagnosisDetails}
+          </div>
+        ) : (
+          <div className="flex-grow mr-2 border-b-black border-b mt-[1.5vh]"></div>
+        )}
       </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+      {form.diagnosisDetails == null || form.diagnosisDetails == "" ? (
+        <div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="flex w-full">
+              <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
-        </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
-        </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
-        </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
-        </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
-        </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="w-full h-[1.4vh] mr-2 border-b-black border-b"></div>
-        </div>
-      </div>
+      ) : null}
       <div className="flex flex-row">
         <div className="flex w-full">
           <div className="leading-loose mr-[1vw] mt-[1vh]">
