@@ -157,10 +157,21 @@ function Report() {
           </div>
         </div>
       ) : null}
-      <div className="flex flex-row">
-        <div className="flex w-full">
-          <div className="leading-loose mr-[1vw] mt-[1vh]">
+      <div className="flex flex-row w-full h-full">
+        <div className="flex w-full h-full">
+          <div className="flex-grow flex flex-col leading-loose mt-[1vh]">
             Photo of the Physical Report:
+            {form.photoUrl ? (
+              <div className="w-full h-full relative">
+                <img
+                  src={form.photoUrl}
+                  alt="Uploaded Report"
+                  className="h-full w-auto object-contain absolute"
+                />
+              </div>
+            ) : (
+              <p className="italic">No image uploaded</p>
+            )}
           </div>
         </div>
       </div>

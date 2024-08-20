@@ -13,10 +13,12 @@ import {
 
 import { MdOutlineUploadFile } from "react-icons/md";
 import { IoIosSave } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 
 import Form from "@/lib/classes/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { getState, set } from "@/lib/slices/formSlice";
+import { useState } from "react";
 
 const itemsArr = [
   {
@@ -115,12 +117,34 @@ const itemsArr = [
 ];
 
 function FormItems({ visibleForm = true }) {
+  const [photoExists, setPhotoExists] = useState(false);
   const dispatch = useDispatch();
   const form = useSelector(getState);
 
   const handleInputChange = (id: keyof Form, value: any) => {
     const updatedForm = { ...form, [id]: value };
     dispatch(set({ form: updatedForm }));
+  };
+
+  const handleFileUpload = (file: File | null) => {
+    if (!file) {
+      console.error("No file selected");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const fileContent = e.target?.result as string | null;
+      const updatedForm = { ...form, photoUrl: fileContent };
+      dispatch(set({ form: updatedForm }));
+      setPhotoExists(true);
+    };
+    reader.readAsDataURL(file);
+  };
+  const handleFileDelete = () => {
+    const updatedForm = { ...form, photoUrl: null };
+    dispatch(set({ form: updatedForm }));
+    setPhotoExists(false);
   };
 
   return (
@@ -132,6 +156,9 @@ function FormItems({ visibleForm = true }) {
           visibleForm={visibleForm}
           form={form}
           handleInputChange={handleInputChange}
+          handleFileUpload={handleFileUpload}
+          handleFileDelete={handleFileDelete}
+          photoExists={photoExists}
         />
       ))}
     </motion.ul>
@@ -143,6 +170,9 @@ function Item({
   visibleForm = true,
   form = new Form(null, null, null, null, null, null),
   handleInputChange = (id: any, value: any) => {},
+  handleFileUpload = (file: any) => {},
+  handleFileDelete = () => {},
+  photoExists = false,
 }) {
   const item = itemsArr[id];
 
@@ -199,18 +229,33 @@ function Item({
             <div className="text-[1.6vh] flex flex-col">
               {item.label}
               <div className="pt-[1vh]">
-                <FileButton onChange={() => {}} accept="image/png,image/jpeg">
-                  {(props) => (
-                    <Button
-                      className="h-[4.5vh]"
-                      color={colors["_form-button-solid"]}
-                      {...props}
-                      leftSection={<MdOutlineUploadFile size={"2vh"} />}
-                    >
-                      <div className="text-[1.4vh]">{item.placeholder}</div>
-                    </Button>
-                  )}
-                </FileButton>
+                {photoExists ? (
+                  <Button
+                    onClick={handleFileDelete}
+                    variant="light"
+                    className="h-[4.5vh]"
+                    color={colors["_form-button-solid-delete"]}
+                    leftSection={<RxCross1 size={"2vh"} />}
+                  >
+                    <div className="text-[1.4vh]">Delete Photo</div>
+                  </Button>
+                ) : (
+                  <FileButton
+                    onChange={handleFileUpload}
+                    accept="image/png,image/jpeg"
+                  >
+                    {(props) => (
+                      <Button
+                        className="h-[4.5vh]"
+                        color={colors["_form-button-solid"]}
+                        {...props}
+                        leftSection={<MdOutlineUploadFile size={"2vh"} />}
+                      >
+                        <div className="text-[1.4vh]">{item.placeholder}</div>
+                      </Button>
+                    )}
+                  </FileButton>
+                )}
               </div>
             </div>
           ) : item.isSave ? (

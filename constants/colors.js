@@ -4,6 +4,7 @@ var colors = {
   "_bg-color": "#C9B0EC",
   "_nav-button-solid": "rgba(189, 0, 63, 1)",
   "_form-button-solid": "rgba(255, 46, 95, 1)",
+  "_form-button-solid-delete": "rgba(250, 0, 42, 1)",
   "_form-button-solid-save": "rgba(189, 0, 63, 1)",
   "_theme-icon": "rgba(3, 7, 18, 0.5)",
 };
