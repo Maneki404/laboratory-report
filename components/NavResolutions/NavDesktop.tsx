@@ -40,7 +40,7 @@ function NavDesktop() {
         </a>
         <div className="w-2/5 h-full text-end flex flex-row gap-[5%] justify-end items-center">
           <Button
-            size="compact-lg"
+            size="compact-md"
             className="flex items-center justify-center"
             variant="outline"
             color={colors["_nav-button-solid"]}
@@ -55,7 +55,7 @@ function NavDesktop() {
             )}
           </Button>
           <Button
-            size="compact-lg"
+            size="compact-md"
             className="flex"
             variant="filled"
             color={colors["_nav-button-solid"]}
@@ -66,7 +66,7 @@ function NavDesktop() {
             <FiPlus className="flex w-full" size={"70%"} />
           </Button>
           <div className="h-full flex justify-center items-center">
-            <NavMenu size={36} />
+            <NavMenu size={32} />
           </div>
         </div>
       </div>

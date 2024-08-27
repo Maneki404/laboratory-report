@@ -9,6 +9,7 @@ import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@/styles/globals.css";
 import Resolutions from "@/components/Resolutions";
 import Background from "@/components/Background";
+import customTheme from "@/styles/theme";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: "500" });
 
@@ -29,7 +30,7 @@ export default function RootLayout({
           <ColorSchemeScript />
         </head>
         <body className={montserrat.className + " tracking-wide"}>
-          <MantineProvider>
+          <MantineProvider theme={customTheme}>
             <Resolutions name="nav" />
             <Background />
             {children}

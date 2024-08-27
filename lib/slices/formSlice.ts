@@ -7,26 +7,20 @@ export interface FormState {
 }
 
 const initialState: FormState = {
-  value: new Form(null, null, null, null, null, null),
+  value: new Form("", "", 0, "", "", ""),
 };
 
 export const formSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
-    set: (
-      state,
-      action: PayloadAction<{
-        form: Form;
-      }>
-    ) => {
-      const { form } = action.payload;
-      state.value = form;
+    setForm: (state, action: PayloadAction<Form>) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { set } = formSlice.actions;
+export const { setForm } = formSlice.actions;
 export const getState = (state: RootState) => state.form.value;
 
 export default formSlice.reducer;

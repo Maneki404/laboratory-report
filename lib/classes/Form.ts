@@ -1,18 +1,18 @@
 export default class Form {
-  firstName: string | null;
-  secondName: string | null;
-  IDNumber: number | null;
-  diagnosisTitle: string | null;
-  diagnosisDetails: string | null;
-  photoUrl: string | null;
+  firstName: string;
+  secondName: string;
+  IDNumber: number;
+  diagnosisTitle: string;
+  diagnosisDetails: string;
+  photoUrl: string;
 
   constructor(
-    firstName: string | null,
-    secondName: string | null,
-    IDNumber: number | null,
-    diagnosisTitle: string | null,
-    diagnosisDetails: string | null,
-    photoUrl: string | null
+    firstName: string,
+    secondName: string,
+    IDNumber: number,
+    diagnosisTitle: string,
+    diagnosisDetails: string,
+    photoUrl: string
   ) {
     this.firstName = firstName;
     this.secondName = secondName;
