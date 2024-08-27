@@ -34,11 +34,12 @@ function FormItems({ visibleForm = true }) {
   });
 
   useEffect(() => {
+    console.log(typeof setError);
     if (touched.firstName) {
       setError((prev) => ({
         ...prev,
         firstName:
-          form.firstName.length < 3
+          form.firstName && form.firstName.length < 3
             ? "First Name must be at least 3 characters long"
             : "",
       }));
@@ -48,7 +49,7 @@ function FormItems({ visibleForm = true }) {
       setError((prev) => ({
         ...prev,
         secondName:
-          form.secondName.length < 3
+          form.secondName && form.secondName.length < 3
             ? "Second Name must be at least 3 characters long"
             : "",
       }));
@@ -58,7 +59,7 @@ function FormItems({ visibleForm = true }) {
       setError((prev) => ({
         ...prev,
         IDNumber:
-          form.IDNumber.toString().length < 11
+          form.IDNumber && form.IDNumber.toString().length < 11
             ? "ID Number must be at least 11 digits long"
             : "",
       }));
@@ -68,7 +69,7 @@ function FormItems({ visibleForm = true }) {
       setError((prev) => ({
         ...prev,
         diagnosisTitle:
-          form.diagnosisTitle.length < 3
+          form.diagnosisTitle && form.diagnosisTitle.length < 3
             ? "Diagnosis Title must be at least 3 characters long"
             : "",
       }));
@@ -78,7 +79,7 @@ function FormItems({ visibleForm = true }) {
       setError((prev) => ({
         ...prev,
         diagnosisDetails:
-          form.diagnosisDetails.length < 3
+          form.diagnosisDetails && form.diagnosisDetails.length < 3
             ? "Diagnosis Details must be at least 3 characters long"
             : "",
       }));
@@ -130,6 +131,7 @@ function FormItems({ visibleForm = true }) {
           photoExists={photoExists}
           handleBlur={handleBlur}
           error={error}
+          setError={setError}
         />
       ))}
     </motion.ul>

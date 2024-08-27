@@ -20,6 +20,7 @@ import {
 import { MdOutlineUploadFile } from "react-icons/md";
 import { IoIosSave } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
+import { useEffect, useState } from "react";
 
 function Item({
   id = 0,
@@ -30,10 +31,80 @@ function Item({
   photoExists = false,
   handleBlur = (id: any) => {},
   error = {},
+  setError = (value: any) => {},
 }) {
   const item = itemsArr[id];
   const form = useSelector(getState);
+  const [hasError, setHasError] = useState(true);
+  const [validateError, setValidateError] = useState({
+    firstName: "",
+    secondName: "",
+    IDNumber: "",
+    diagnosisTitle: "",
+    diagnosisDetails: "",
+    photoUrl: "",
+  });
 
+  useEffect(() => {
+    if (
+      form.firstName &&
+      form.firstName.length >= 3 &&
+      form.secondName &&
+      form.secondName.length >= 3 &&
+      form.IDNumber &&
+      form.IDNumber.toString().length == 11 &&
+      form.diagnosisTitle &&
+      form.diagnosisTitle.length >= 3 &&
+      form.diagnosisDetails &&
+      form.diagnosisDetails.length >= 3 &&
+      form.photoUrl
+    ) {
+      setHasError(false);
+    } else {
+      setHasError(true);
+    }
+    setError(validateError);
+  }, [form, validateError]);
+
+  function validateForm() {
+    if (!form.firstName || form.firstName.length >= 3) {
+      setValidateError((prev) => ({
+        ...prev,
+        firstName: "First Name must be at least 3 characters long",
+      }));
+    }
+    if (!form.secondName || form.secondName.length >= 3) {
+      setValidateError((prev) => ({
+        ...prev,
+        secondName: "Second Name must be at least 3 characters long",
+      }));
+    }
+    if (!form.IDNumber || form.IDNumber.toString().length == 11) {
+      setValidateError((prev) => ({
+        ...prev,
+        IDNumber: "ID Number must be at least 11 digits long",
+      }));
+    }
+    if (!form.diagnosisTitle || form.diagnosisTitle.length >= 3) {
+      setValidateError((prev) => ({
+        ...prev,
+        diagnosisTitle: "Diagnosis Title must be at least 3 characters long",
+      }));
+    }
+    if (!form.diagnosisDetails || form.diagnosisDetails.length >= 3) {
+      setValidateError((prev) => ({
+        ...prev,
+        diagnosisDetails:
+          "Diagnosis Details must be at least 3 characters long",
+      }));
+    }
+    if (!form.photoUrl) {
+      setValidateError((prev) => ({
+        ...prev,
+        photoUrl: "Please provide a report photo.",
+      }));
+    }
+  }
   return (
     <motion.li
       className="w-1/2"
@@ -55,7 +126,11 @@ function Item({
                   label: { fontSize: "1.6vh", paddingBottom: "0.5vh" },
                 }}
                 label={item.label}
-                error={error[item.id as keyof typeof error] || ""}
+                error={
+                  error[item.id as keyof typeof error] ||
+                  "" ||
+                  validateError[item.id as keyof typeof error]
+                }
               >
                 {item.isOneLine ? (
                   <Input
@@ -132,7 +207,7 @@ function Item({
                 className="h-[4.5vh]"
                 color={colors["_form-button-solid-save"]}
                 rightSection={<IoIosSave size={"2vh"} />}
-                onClick={SaveForm}
+                onClick={hasError ? validateForm : SaveForm}
               >
                 <div className="text-[1.4vh]">{item.placeholder}</div>
               </Button>
@@ -145,7 +220,11 @@ function Item({
                 }}
                 className="mr-[1vw]"
                 label={item.label}
-                error={error[item.id as keyof typeof error] || ""}
+                error={
+                  error[item.id as keyof typeof error] ||
+                  "" ||
+                  validateError[item.id as keyof typeof error]
+                }
               >
                 <NumberInput
                   maxLength={11}
@@ -174,7 +253,11 @@ function Item({
                 }}
                 className="mr-[1vw]"
                 label={item.label}
-                error={error[item.id as keyof typeof error] || ""}
+                error={
+                  error[item.id as keyof typeof error] ||
+                  "" ||
+                  validateError[item.id as keyof typeof error]
+                }
               >
                 <Input
                   maxLength={50}

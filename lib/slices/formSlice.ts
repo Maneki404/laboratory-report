@@ -7,7 +7,7 @@ export interface FormState {
 }
 
 const initialState: FormState = {
-  value: new Form("", "", 0, "", "", ""),
+  value: new Form(null, null, null, null, null, null),
 };
 
 export const formSlice = createSlice({
