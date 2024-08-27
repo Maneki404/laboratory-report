@@ -9,7 +9,7 @@ function ReportMobile() {
   const [visibleReport, setVisibleReport] = useState(false);
   const [visibleForm, setVisibleForm] = useState(true);
   return (
-    <div className="flex flex-col h-[86vh] w-full absolute top-[13vh] items-center">
+    <div className="flex flex-col h-[85vh] w-full absolute top-[13vh] items-center">
       <div className="z-20">
         <motion.div
           transition={{ duration: 0.8 }}
@@ -17,7 +17,7 @@ function ReportMobile() {
           children={<FormItems visibleForm={visibleForm} />}
         />
       </div>
-      <div className="z-20 absolute top-[87vh]">
+      <div className="z-20 absolute top-[100vh]">
         <motion.div
           onViewportLeave={() => {
             setVisibleReport(false);
